@@ -1,5 +1,7 @@
 # Desafio Técnico — Estágio em Ciência de Dados
 
+Repositório: https://github.com/MateusRestier/desafio-ciencia-de-dados-ibre
+
 Boas práticas:
 
 -> python -m venv "nome da pasta"

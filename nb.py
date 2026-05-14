@@ -8,6 +8,7 @@ with open(input(), 'r') as f:
 
 t = j[0]['texto']
 
+# 
 tags = re.compile(r'<.*?>')
 t2 = tags.sub('', t)
 #print(t2)

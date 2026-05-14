@@ -7,7 +7,8 @@ import re
 with open("dados/noticias_brutas.json","r",encoding="utf-8") as file:
     data = json.load(file)
 
-#pprint(data)
+
+# Etapa 1 — Limpeza e Tratamento de Texto
 
 def clean_text(texto_sujo):
     texto_limpo = re.sub(r"\n.+://.+", "\n", texto_sujo, count = 1)
@@ -17,12 +18,13 @@ def clean_text(texto_sujo):
     texto_limpo = re.sub(r"\n+","\n",texto_limpo)
     return texto_limpo.strip()
 
-#print(clean_text(data[17]["texto"]))
 
+# função que passa limpando os dados e retirando os com dados com conteudo minimo
 def clean_json():
     i = 0
     while True:
         data[i]["texto"] = clean_text(data[i]["texto"])
+        #data[i]["id"] = i+1 # atualiza o id 
         if len(data[i]["texto"]) <= 10:
             data.pop(i)
         elif (i+1) < len(data):
@@ -32,4 +34,14 @@ def clean_json():
 
 clean_json()
 
-pprint(data)
+# salvando os dados localmente
+with open("dados/noticias_limpas.json", "w",encoding="utf-8") as file:
+    json.dump(data, file,ensure_ascii=False,indent=2)
+
+pprint(data, width=300)
+
+# Etapa 2 — Geração de Embeddings
+
+
+
+# Etapa 3 — Motor de Busca Semântico
